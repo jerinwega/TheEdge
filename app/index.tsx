@@ -1,15 +1,20 @@
-import { Text, View } from "react-native";
-import '../global.css';
+import DateTabSelector from "@/components/DateTabSelector";
+import Header from "@/components/Header";
+import { StatusBar, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text className="text-cyan-400">hello</Text>
-    </View>
+     <SafeAreaView className="flex-1 bg-backgroundPrimary" edges={['top', 'left', 'right']}>
+      <StatusBar barStyle="light-content" />
+      <View className="flex-1">
+        <Header />
+        <DateTabSelector />
+        <View className="flex-1 justify-center items-center">
+          <Text className="text-textPrimary text-xl">Hello Home</Text>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
