@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react";
 import {
-    Animated,
-    FlatList,
-    Pressable,
-    Text,
-    View,
+  Animated,
+  FlatList,
+  Pressable,
+  Text,
+  View,
 } from "react-native";
 
-const ITEM_WIDTH = 80;
+// const ITEM_WIDTH = 80;
 
 type DateTab = {
   label: string; // for Today/Tomorrow only
@@ -24,15 +24,24 @@ const DateTabSelector: React.FC = () => {
     date: new Date(Date.now() + i * 86400000),
   }));
 
-  const handlePress = (index: number) => {
-    setSelectedIndex(index);
-    flatListRef.current?.scrollToIndex({ index, animated: true });
-    Animated.timing(animatedValue, {
-      toValue: index,
-      duration: 300,
-      useNativeDriver: false,
-    }).start();
-  };
+
+const handlePress = (index: number) => {
+  setSelectedIndex(index);
+
+  flatListRef.current?.scrollToIndex({
+    index,
+    animated: true,
+    viewPosition: 0.5, // center tab — works fine without getItemLayout
+  });
+
+  Animated.timing(animatedValue, {
+    toValue: index,
+    duration: 300,
+    useNativeDriver: false,
+  }).start();
+};
+
+
 
 const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
   const day = item.date.getDate();
@@ -47,12 +56,12 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
     return (
       <Pressable
         onPress={() => handlePress(index)}
-        className={`w-20 mr-2 items-center rounded-lg py-3 justify-center ${
+        className={`w-24 mr-1 items-center rounded-lg py-2 justify-center ${
           isActive ? "bg-dateSelectorActiveBg" : "bg-backgroundCard"
         }`}
       >
         <Text
-          className={`text-sm ${
+          className={`text-md ${
             isActive ? "text-white font-bold" : "text-textInactive"
           }`}
         >
@@ -66,9 +75,9 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
   return (
     <Pressable
       onPress={() => handlePress(index)}
-      className={`w-20 mr-2 items-center rounded-lg py-3 ${
-        isActive ? "bg-dateSelectorActiveBg" : "bg-backgroundCard"
-      }`}
+      className={`w-16 items-center rounded-lg py-2 ${
+    isActive ? "bg-dateSelectorActiveBg" : "bg-backgroundCard"
+  } ${index !== dateTabs.length - 1 ? "mr-1" : ""}`}
     >
       <Text
         className={`text-lg font-bold ${
@@ -79,7 +88,7 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
       </Text>
       <Text
         className={`mt-1 text-sm ${
-          isActive ? "text-white" : "text-textInactive"
+          isActive ? "text-white font-bold" : "text-textInactive"
         }`}
       >
         {month}
@@ -90,7 +99,7 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
 
 
   return (
-    <View className="bg-backgroundCard mt-5">
+    <View className="bg-backgroundCard mt-3 rounded-lg">
       <FlatList
         ref={flatListRef}
         data={dateTabs}
@@ -98,11 +107,12 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
         keyExtractor={(_, i) => i.toString()}
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
-        getItemLayout={(_, index) => ({
-          length: ITEM_WIDTH,
-          offset: ITEM_WIDTH * index,
-          index,
-        })}
+        // contentContainerStyle={{ paddingHorizontal: 16 }} // helps center edge items
+        // getItemLayout={(_, index) => ({
+        //   length: ITEM_WIDTH,
+        //   offset: ITEM_WIDTH * index,
+        //   index,
+        // })}
       />
     </View>
   );
