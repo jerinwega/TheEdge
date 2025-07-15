@@ -13,7 +13,7 @@ const { width } = Dimensions.get("window");
 const CARD_WIDTH = width * 0.92;
 const CARD_HEIGHT = 120;
 const BORDER_RADIUS = 24;
-const BORDER_THICKNESS = 1;
+const BORDER_THICKNESS = 0.2;
 const CARD_SPACING = 12;
 const ROTATE_SIZE = CARD_WIDTH + 40;
 
@@ -27,7 +27,7 @@ const HomeCards: React.FC = () => {
     Animated.loop(
       Animated.timing(rotateAnim, {
         toValue: 1,
-        duration: 8000,
+        duration: 5000,
         useNativeDriver: true,
       })
     ).start();
