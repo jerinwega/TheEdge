@@ -12,7 +12,7 @@ export default function Index() {
       <View className="flex-1">
         <Header />
         <DateTabSelector />
-          <HomeCards />
+        <HomeCards />
       </View>
     </SafeAreaView>
   );
