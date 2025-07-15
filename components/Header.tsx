@@ -6,7 +6,7 @@ const Header = () => {
   <Text numberOfLines={1} className="text-textPrimary text-2xl font-black pt-0.5">
     the{" "}
   </Text>
-  <Text numberOfLines={1} className="text-red-700 text-3xl font-black">
+  <Text numberOfLines={1} className="text-logoRed text-3xl font-black">
     EDGE
   </Text>
 </View>

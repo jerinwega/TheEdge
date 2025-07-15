@@ -7,18 +7,16 @@ import { Provider } from 'react-redux';
 import store from '../redux/store';
 
 const { width } = Dimensions.get('window');
-const horizontalMargin = Math.min(width * 0.28, 105); // cap at 100px
-
+const horizontalMargin = Math.min(width * 0.28, 105); // cap at 105
 
 export default function RootLayout() {
-
   return (
     <Provider store={store}>
       <Tabs
         screenOptions={{
           headerShown: false,
           tabBarItemStyle: {
-            marginTop: 11
+            marginTop: 11.5
           },
           tabBarStyle: {
             backgroundColor: colors.backgroundPrimary,
@@ -28,10 +26,8 @@ export default function RootLayout() {
             marginHorizontal: horizontalMargin,
             borderRadius: 40,
             borderWidth: 1,
-            borderTopWidth: 1,
             borderColor: colors.backgroundPrimary,
-            borderTopColor: colors.backgroundPrimary,
-            shadowColor: 'rgba(255, 255, 255, 0.03)',
+            shadowColor: colors.shadowColor,
             shadowOffset: { width: 0, height: 0 },
             shadowOpacity: 1,
             shadowRadius: 5,
@@ -51,14 +47,10 @@ export default function RootLayout() {
           options={{
             tabBarIcon: ({ color, focused }) => (
               <View
-                style={{
-                width: 48,
-                height: 48,
-                borderRadius: 30,
-                backgroundColor: focused ? colors.logoRed : 'transparent',
-                justifyContent: 'center',
-                alignItems: 'center',
-                }}
+                style={{ width: 48, height: 48 }}
+                className={`rounded-[24px] justify-center items-center ${
+                  focused ? 'bg-logoRed' : 'bg-transparent'
+                }`}
               >
                 <Ionicons name="home" size={22} color={color} />
               </View>
@@ -72,14 +64,10 @@ export default function RootLayout() {
           options={{
             tabBarIcon: ({ color, focused }) => (
               <View
-                style={{
-                width: 48,
-                height: 48,
-                borderRadius: 30,
-                backgroundColor: focused ? colors.logoRed : 'transparent',
-                justifyContent: 'center',
-                alignItems: 'center',
-                }}
+              style={{ width: 48, height: 48 }}
+                className={`rounded-[24px] justify-center items-center ${
+                  focused ? 'bg-logoRed' : 'bg-transparent'
+                }`}
               >
                 <Ionicons name="star" size={22} color={color} />
               </View>

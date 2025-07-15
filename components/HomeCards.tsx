@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import {
-    Animated,
-    Dimensions,
-    ListRenderItem,
-    StyleSheet,
-    View,
+  Animated,
+  Dimensions,
+  ListRenderItem,
+  StyleSheet,
+  View,
 } from "react-native";
 
 const { width } = Dimensions.get("window");
