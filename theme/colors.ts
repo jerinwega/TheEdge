@@ -13,7 +13,8 @@ const colors = {
         iconInactive: '#7F7F7F',
         iconActive: '#FFFFFF',
         logoRed: '#c10007',
-        shadowColor: 'rgba(255, 255, 255, 0.03)'
+        shadowColor: 'rgba(255, 255, 255, 0.03)',
+        animatedBorder: 'rgba(255, 255, 255, 0.2)'
 };
 
 export default colors;
