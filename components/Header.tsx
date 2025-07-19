@@ -3,12 +3,19 @@ import { Text, View } from "react-native";
 const Header = () => {
   return (
   <View className="flex-row justify-center py-5">
-  <Text numberOfLines={1} className="text-textPrimary text-2xl font-black pt-0.5">
-    the{" "}
+  <Text className="text-textPrimary text-xl font-mrDafoe pt-0.1">
+    the{"  "}
   </Text>
-  <Text numberOfLines={1} className="text-logoRed text-3xl font-black">
-    EDGE
-  </Text>
+   <View className="flex-row items-end">
+        <Text className="text-logoRed text-4xl font-bungee">
+          ED
+        </Text>
+         <View style={{ transform: [{ scaleX: -1 }] }}>
+          <Text className="text-logoRed text-4xl font-bungee">
+            EG
+          </Text>
+        </View>
+      </View>
 </View>
   );
 };

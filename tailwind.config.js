@@ -6,6 +6,13 @@ module.exports = {
   darkMode: "class", // <-- important!
   theme: {
     extend: {
+      fontFamily: {
+        bungee: ['BungeeTint'],
+        mrDafoe: ['MrDafoe'],
+        lato: ['Lato'],
+        latoBold: ['LatoBold'],
+        latoBlack: ['LatoBlack']
+      },
       colors: {
         backgroundPrimary: '#0D0D0D',
         backgroundCard: '#1A1A1A',

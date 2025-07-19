@@ -52,7 +52,7 @@ export default function RootLayout() {
                   focused ? 'bg-logoRed' : 'bg-transparent'
                 }`}
               >
-                <Ionicons name="home" size={22} color={color} />
+                <Ionicons name={focused ? 'home' : 'home-outline'} size={20} color={color} />
               </View>
             ),
             title: 'Home',
@@ -69,7 +69,7 @@ export default function RootLayout() {
                   focused ? 'bg-logoRed' : 'bg-transparent'
                 }`}
               >
-                <Ionicons name="star" size={22} color={color} />
+                <Ionicons name={focused ? 'star' : 'star-outline'} size={20} color={color} />
               </View>
             ),
             title: 'Favourites',

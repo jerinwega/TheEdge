@@ -61,8 +61,8 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
         }`}
       >
         <Text
-          className={`text-md ${
-            isActive ? "text-white font-bold" : "text-textInactive"
+          className={`text-base font-bold ${
+            isActive ? "text-white font-bungee" : "text-textInactive"
           }`}
         >
           {item.label}
@@ -80,15 +80,15 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
   } ${index !== dateTabs.length - 1 ? "mr-1" : ""}`}
     >
       <Text
-        className={`text-lg font-bold ${
-          isActive ? "text-white" : "text-textInactive"
+        className={`text-base font-bold ${
+          isActive ? "text-white font-bungee" : "text-textInactive"
         }`}
       >
         {day}
       </Text>
       <Text
         className={`mt-1 text-sm ${
-          isActive ? "text-white font-bold" : "text-textInactive"
+          isActive ? "text-white font-bungee font-bold" : "text-textInactive"
         }`}
       >
         {month}
