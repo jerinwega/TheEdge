@@ -10,7 +10,6 @@ module.exports = {
         bungee: ['BungeeTint'],
         mrDafoe: ['MrDafoe'],
         lato: ['Lato'],
-        latoBold: ['LatoBold'],
         latoBlack: ['LatoBlack']
       },
       colors: {
@@ -19,12 +18,6 @@ module.exports = {
         textPrimary: '#FFFFFF',
         textSecondary: '#B0B0B0',
         textInactive: '#AAAAAA',
-        accentWolvesYellow: '#FDB913',
-        accentManUnitedRed: '#DA291C',
-        accentForestRed: '#FF0000',
-        accentBrightonBlue: '#0057B8',
-        dateSelectorActiveBg: '#2E2E2E',
-        dateTextActive: '#FFFFFF',
         iconInactive: '#7F7F7F',
         iconActive: '#FFFFFF',
         logoRed: '#c10007',

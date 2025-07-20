@@ -10,7 +10,6 @@ export const useCustomFonts = () => {
         MrDafoe: require('../assets/fonts/MrDafoe-Regular.ttf'),
         BungeeTint: require('../assets/fonts/BungeeInline-Regular.ttf'),
         Lato: require('../assets/fonts/Lato-Regular.ttf'),
-        LatoBold: require('../assets/fonts/Lato-Bold.ttf'),
         LatoBlack: require('../assets/fonts/Lato-Black.ttf'),
       });
       setFontsLoaded(true);

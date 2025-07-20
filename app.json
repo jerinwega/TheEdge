@@ -9,14 +9,16 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jerinwega1515.TheEdge"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.jerinwega1515.TheEdge"
     },
     "web": {
       "bundler": "metro",
@@ -28,10 +30,14 @@
       [
         "expo-splash-screen",
         {
+          "backgroundColor": "#0D0D0D",
           "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "dark": {
+            "image": "./assets/images/splash-icon.png",
+            "backgroundColor": "#0D0D0D"
+          },
+          "imageWidth": 200
         }
       ]
     ],

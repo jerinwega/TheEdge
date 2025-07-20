@@ -56,13 +56,13 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
     return (
       <Pressable
         onPress={() => handlePress(index)}
-        className={`w-24 mr-1 items-center rounded-lg py-2 justify-center ${
-          isActive ? "bg-dateSelectorActiveBg" : "bg-backgroundCard"
+        className={`w-24 mr-1 items-center rounded-2xl py-2 justify-center ${
+          isActive ? "bg-backgroundCard" : "bg-transparent"
         }`}
       >
         <Text
-          className={`text-base font-bold ${
-            isActive ? "text-white font-bungee" : "text-textInactive"
+          className={`text-base ${
+            isActive ? "text-white font-bungee" : "text-textInactive font-latoBlack"
           }`}
         >
           {item.label}
@@ -75,20 +75,20 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
   return (
     <Pressable
       onPress={() => handlePress(index)}
-      className={`w-16 items-center rounded-lg py-2 ${
-    isActive ? "bg-dateSelectorActiveBg" : "bg-backgroundCard"
+      className={`w-16 items-center rounded-2xl py-2 ${
+    isActive ? "bg-backgroundCard" : "bg-transparent"
   } ${index !== dateTabs.length - 1 ? "mr-1" : ""}`}
     >
       <Text
-        className={`text-base font-bold ${
-          isActive ? "text-white font-bungee" : "text-textInactive"
+        className={`text-base ${
+          isActive ? "text-white font-bungee" : "text-textInactive font-latoBlack"
         }`}
       >
         {day}
       </Text>
       <Text
         className={`mt-1 text-sm ${
-          isActive ? "text-white font-bungee font-bold" : "text-textInactive"
+          isActive ? "text-white font-bungee font-bold" : "text-textInactive font-lato"
         }`}
       >
         {month}
@@ -99,7 +99,7 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
 
 
   return (
-    <View className="bg-backgroundCard mt-3 rounded-lg">
+    <View className="bg-transparent mt-3 rounded-lg">
       <FlatList
         ref={flatListRef}
         data={dateTabs}
@@ -107,12 +107,7 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
         keyExtractor={(_, i) => i.toString()}
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
-        // contentContainerStyle={{ paddingHorizontal: 16 }} // helps center edge items
-        // getItemLayout={(_, index) => ({
-        //   length: ITEM_WIDTH,
-        //   offset: ITEM_WIDTH * index,
-        //   index,
-        // })}
+        contentContainerStyle={{ paddingBottom: 16, paddingHorizontal: 2 }}
       />
     </View>
   );
