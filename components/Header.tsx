@@ -21,7 +21,7 @@ const Header = () => {
       <View className='relative w-9 h-9 ml-0.5'>
         <LottieView
           // eslint-disable-next-line @typescript-eslint/no-require-imports
-          source={require('@/assets/animations/edge.lottie')}
+          source={require('@/assets/animations/flag.lottie')}
           autoPlay
           loop
           style={{
