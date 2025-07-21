@@ -10,7 +10,8 @@ module.exports = {
         bungee: ['BungeeTint'],
         mrDafoe: ['MrDafoe'],
         lato: ['Lato'],
-        latoBlack: ['LatoBlack']
+        latoBold: ['LatoBold'],
+        latoBlack: ['LatoBlack'],
       },
       colors: {
         backgroundPrimary: '#0D0D0D',

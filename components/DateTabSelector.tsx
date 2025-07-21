@@ -7,7 +7,6 @@ import {
   View,
 } from "react-native";
 
-// const ITEM_WIDTH = 80;
 
 type DateTab = {
   label: string; // for Today/Tomorrow only
@@ -56,13 +55,13 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
     return (
       <Pressable
         onPress={() => handlePress(index)}
-        className={`w-24 mr-1 items-center rounded-2xl py-2 justify-center ${
-          isActive ? "bg-backgroundCard" : "bg-transparent"
+        className={`w-24 mr-2 items-center rounded-2xl py-1 justify-center ${
+          isActive ? "bg-slate-300" : "bg-transparent"
         }`}
       >
         <Text
           className={`text-base ${
-            isActive ? "text-white font-bungee" : "text-textInactive font-latoBlack"
+            isActive ? "text-black font-bungee" : "text-textInactive font-latoBold"
           }`}
         >
           {item.label}
@@ -75,20 +74,20 @@ const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
   return (
     <Pressable
       onPress={() => handlePress(index)}
-      className={`w-16 items-center rounded-2xl py-2 ${
-    isActive ? "bg-backgroundCard" : "bg-transparent"
-  } ${index !== dateTabs.length - 1 ? "mr-1" : ""}`}
+      className={`w-14 items-center rounded-2xl py-1 ${
+    isActive ? "bg-slate-300" : "bg-transparent"
+  } ${index !== dateTabs.length - 1 ? "mr-2" : ""}`}
     >
       <Text
         className={`text-base ${
-          isActive ? "text-white font-bungee" : "text-textInactive font-latoBlack"
+          isActive ? "text-black font-bungee" : "text-textInactive font-latoBold"
         }`}
       >
         {day}
       </Text>
       <Text
-        className={`mt-1 text-sm ${
-          isActive ? "text-white font-bungee font-bold" : "text-textInactive font-lato"
+        className={`text-sm ${
+          isActive ? "text-black font-bungee font-bold" : "text-textInactive font-latoBold"
         }`}
       >
         {month}

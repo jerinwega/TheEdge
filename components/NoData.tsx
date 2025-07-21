@@ -4,13 +4,12 @@ import { Dimensions, Text, View } from "react-native";
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 
-const NoDataForToday = () => {
+const NoData = () => {
   return (
    <View className="absolute inset-0 justify-center items-center">
         <LottieView 
             // eslint-disable-next-line @typescript-eslint/no-require-imports
-            source={require('@/assets/animations/restday.lottie')}
-            // source={require('@/assets/animations/ufo.lottie')}
+            source={require('@/assets/animations/ufo.lottie')}
             autoPlay
             loop
             resizeMode="cover"
@@ -20,7 +19,7 @@ const NoDataForToday = () => {
               
             }}
           />
-      <View className='relative items-center mt-[-40px]'>
+      <View className='relative items-center mt-[-20px]'>
         <Text className="text-textInactive tracking-wider text-xl font-bungee font-bold">
           No Hits
         </Text>
@@ -29,4 +28,4 @@ const NoDataForToday = () => {
   );
 };
 
-export default NoDataForToday;
+export default NoData;

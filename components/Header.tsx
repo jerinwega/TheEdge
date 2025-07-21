@@ -32,8 +32,8 @@ const Header = () => {
         <LottieView
           // eslint-disable-next-line @typescript-eslint/no-require-imports
           source={require('@/assets/animations/football.lottie')}
-          autoPlay
-          loop
+          // autoPlay
+          // loop
           style={{
             width: 20,
             height: 20,

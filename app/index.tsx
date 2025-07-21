@@ -1,7 +1,8 @@
 import DateTabSelector from "@/components/DateTabSelector";
 import Header from "@/components/Header";
-// import HomeCards from "@/components/HomeCards";
-import NoDataForToday from "@/components/NoDataForToday";
+// import NoData from "@/components/NoData";
+import HomeCards from "@/components/HomeCards";
+// import NoDataForToday from "@/components/NoDataForToday";
 import { useCustomFonts } from '@/hooks/useCustomFonts';
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
@@ -35,8 +36,9 @@ export default function Index() {
       <View className="flex-1">
         <Header />
         <DateTabSelector />
-        {/* <HomeCards /> */}
-        <NoDataForToday />
+        <HomeCards />
+        {/* <NoDataForToday /> */}
+        {/* <NoData /> */}
       </View>
     </SafeAreaView>
   );
