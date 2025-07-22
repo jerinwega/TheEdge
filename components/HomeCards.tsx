@@ -46,7 +46,7 @@ const HomeCards: React.FC = () => {
 
     const opacity = position.interpolate({
       inputRange: [-1, 0, 1, 2],
-      outputRange: [0.5, 0.8, 0.8, 0.5],
+      outputRange: [0.4, 0.8, 0.8, 0.4],
       extrapolate: "clamp",
     });
 

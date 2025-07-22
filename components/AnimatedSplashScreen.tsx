@@ -19,14 +19,14 @@ const AnimatedSplashScreen = ({
             exiting={ZoomOut}
             ref={animation}
             onAnimationFinish={onAnimationFinish}
-            source={require('@/assets/animations/edgeSplash.json')}
+            source={require('@/assets/animations/edgesplash.json')}
             autoPlay
             loop={false}
             resizeMode="cover"
             style={{
-              width: SCREEN_WIDTH * 1, 
-              height: SCREEN_WIDTH * 1,
-              // backgroundColor: colors.backgroundPrimary
+              width: SCREEN_WIDTH, 
+              maxWidth: 400,
+              height: SCREEN_WIDTH,
             }}
         />
       </View>

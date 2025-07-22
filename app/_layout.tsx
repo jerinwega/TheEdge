@@ -79,6 +79,7 @@ export default function RootLayout() {
         <Tabs.Screen
           name="index"
           options={{
+            lazy: true,
             tabBarButton: (props) => (
               <CustomTabBarButton
                 {...props}
@@ -92,6 +93,7 @@ export default function RootLayout() {
         <Tabs.Screen
           name="favourites"
           options={{
+            lazy: true,
             tabBarButton: (props) => (
               <CustomTabBarButton
                 {...props}
