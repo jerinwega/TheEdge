@@ -8,6 +8,9 @@
     "scheme": "theedge",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+     "extra": {
+      "RAPID_API_KEY": "dd3c094ed3be095d69835cc701337786",
+    },
     "splash": {
           "backgroundColor": "#0D0D0D",
           "image": "./assets/images/splash-icon.png",

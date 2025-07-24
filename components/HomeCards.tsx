@@ -1,3 +1,4 @@
+import { Fixture } from '@/redux/actions/types/fixtureTypes';
 import colors from "@/theme/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useRef } from "react";
@@ -6,7 +7,8 @@ import {
   Dimensions,
   ListRenderItem,
   StyleSheet,
-  View,
+  Text,
+  View
 } from "react-native";
 
 const { width } = Dimensions.get("window");
@@ -19,7 +21,15 @@ const ROTATE_SIZE = CARD_WIDTH + 40;
 
 const DATA = Array.from({ length: 20 }).map((_, i) => ({ id: i.toString() }));
 
-const HomeCards: React.FC = () => {
+
+interface HomeCardsProps {
+  fixtures: Fixture[];
+  isFetching: boolean;
+  error: string | null;
+}
+
+
+const HomeCards: React.FC<HomeCardsProps> = ({ fixtures, isFetching, error }) => {
   const scrollY = useRef(new Animated.Value(0)).current;
   const rotateAnim = useRef(new Animated.Value(0)).current;
 
@@ -37,6 +47,33 @@ const HomeCards: React.FC = () => {
     inputRange: [0, 1],
     outputRange: ["0deg", "360deg"],
   });
+
+
+
+   if (isFetching) {
+    return (
+      <View className='flex-1 justify-center'>
+        <Text style={{ color: colors.textPrimary }}>Loading fixtures...</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+       <View className='flex-1 justify-center'>
+        <Text style={{ color: colors.logoRed }}>Error: {error}</Text>
+      </View>
+    );
+  }
+
+  if (!fixtures?.length) {
+    return (
+       <View className='flex-1 justify-center'>
+        <Text style={{ color: colors.textSecondary }}>No fixtures available</Text>
+      </View>
+    );
+  }
+
 
   const renderItem: ListRenderItem<{ id: string }> = ({ index }) => {
     const position = Animated.subtract(
@@ -61,6 +98,12 @@ const HomeCards: React.FC = () => {
       outputRange: [0.95, 1, 0.97, 0.95],
       extrapolate: "clamp",
     });
+
+
+
+    console.log("api hit", fixtures);
+
+
 
     return (
       <Animated.View

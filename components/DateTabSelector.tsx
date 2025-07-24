@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React, { useRef, useState } from "react";
 import {
   Animated,
@@ -20,7 +21,7 @@ const DateTabSelector: React.FC = () => {
 
   const dateTabs: DateTab[] = Array.from({ length: 15 }, (_, i) => ({
     label: i === 0 ? "TODAY" : "", 
-    date: new Date(Date.now() + i * 86400000),
+    date: dayjs().add(i, 'day').toDate(),
   }));
 
 
