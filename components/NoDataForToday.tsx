@@ -21,8 +21,8 @@ const NoDataForToday = () => {
             }}
           />
       <View className='relative items-center mt-[-40px]'>
-        <Text className="text-textInactive tracking-wider text-xl font-bungee font-bold">
-          No Hits
+        <Text className="text-textInactive tracking-wider text-lg font-latoBold">
+          No Fixtures
         </Text>
       </View>
     </View>

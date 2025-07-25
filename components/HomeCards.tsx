@@ -1,5 +1,8 @@
+import NoData from "@/components/NoData";
+import NoDataForToday from "@/components/NoDataForToday";
 import { Fixture } from '@/redux/actions/types/fixtureTypes';
 import colors from "@/theme/colors";
+import dayjs from 'dayjs';
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useRef } from "react";
 import {
@@ -11,6 +14,7 @@ import {
   View
 } from "react-native";
 
+
 const { width } = Dimensions.get("window");
 const CARD_WIDTH = width * 0.92;
 const CARD_HEIGHT = 120;
@@ -19,17 +23,16 @@ const BORDER_THICKNESS = 0.2;
 const CARD_SPACING = 12;
 const ROTATE_SIZE = CARD_WIDTH + 40;
 
-const DATA = Array.from({ length: 20 }).map((_, i) => ({ id: i.toString() }));
-
 
 interface HomeCardsProps {
   fixtures: Fixture[];
   isFetching: boolean;
   error: string | null;
+  selectedDate: string
 }
 
 
-const HomeCards: React.FC<HomeCardsProps> = ({ fixtures, isFetching, error }) => {
+const HomeCards: React.FC<HomeCardsProps> = ({ fixtures, isFetching, error, selectedDate }) => {
   const scrollY = useRef(new Animated.Value(0)).current;
   const rotateAnim = useRef(new Animated.Value(0)).current;
 
@@ -49,10 +52,9 @@ const HomeCards: React.FC<HomeCardsProps> = ({ fixtures, isFetching, error }) =>
   });
 
 
-
    if (isFetching) {
     return (
-      <View className='flex-1 justify-center'>
+      <View className='flex-1 justify-center items-center'>
         <Text style={{ color: colors.textPrimary }}>Loading fixtures...</Text>
       </View>
     );
@@ -60,22 +62,18 @@ const HomeCards: React.FC<HomeCardsProps> = ({ fixtures, isFetching, error }) =>
 
   if (error) {
     return (
-       <View className='flex-1 justify-center'>
+       <View className='flex-1 justify-center items-center'>
         <Text style={{ color: colors.logoRed }}>Error: {error}</Text>
       </View>
     );
   }
 
-  if (!fixtures?.length) {
-    return (
-       <View className='flex-1 justify-center'>
-        <Text style={{ color: colors.textSecondary }}>No fixtures available</Text>
-      </View>
-    );
-  }
+if (!fixtures?.length) {
+  return dayjs(selectedDate).isSame(dayjs(), 'day') ? <NoDataForToday /> : <NoData />;
+}
 
 
-  const renderItem: ListRenderItem<{ id: string }> = ({ index }) => {
+  const renderItem: ListRenderItem<Fixture> = ({ item, index }) => {
     const position = Animated.subtract(
       Animated.divide(scrollY, CARD_HEIGHT + CARD_SPACING),
       index
@@ -101,7 +99,7 @@ const HomeCards: React.FC<HomeCardsProps> = ({ fixtures, isFetching, error }) =>
 
 
 
-    console.log("api hit", fixtures);
+    // console.log("api hit", fixtures);
 
 
 
@@ -124,7 +122,7 @@ const HomeCards: React.FC<HomeCardsProps> = ({ fixtures, isFetching, error }) =>
             colors.backgroundCard,       
             colors.backgroundCard,      
             ]}
-            locations={[0.0, 0.4, 1]} 
+            locations={[0, 0.4, 1]} 
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1.5 }}
               style={styles.gradient}
@@ -132,7 +130,14 @@ const HomeCards: React.FC<HomeCardsProps> = ({ fixtures, isFetching, error }) =>
           </Animated.View>
 
           {/* Inner Card */}
-          <View style={styles.innerCard} />
+          <View style={[styles.innerCard, { padding: 12, justifyContent: 'center' }]}>
+            <Text style={{ color: colors.textPrimary, fontWeight: 'bold', fontSize: 16 }}>
+              {item.teams.home.name} vs {item.teams.away.name}
+            </Text>
+            <Text style={{ color: colors.textSecondary, fontSize: 14 }}>
+              {dayjs(item.fixture.date).format('HH:mm A')} • {item.league.name}
+            </Text>
+          </View>
         </View>
       </Animated.View>
     );
@@ -140,10 +145,10 @@ const HomeCards: React.FC<HomeCardsProps> = ({ fixtures, isFetching, error }) =>
 
   return (
     <Animated.FlatList
-      data={DATA}
+      data={fixtures}
       renderItem={renderItem}
-      keyExtractor={(item) => item.id}
-      contentContainerStyle={{ paddingTop: 16, paddingBottom: CARD_HEIGHT * 2 }}
+      keyExtractor={(item) => item?.fixture?.id.toString()}
+      contentContainerStyle={{ paddingTop: 16, paddingBottom: CARD_HEIGHT * 2.5 }}
       showsVerticalScrollIndicator={false}
       ItemSeparatorComponent={() => <View style={{ height: CARD_SPACING }} />}
       onScroll={Animated.event(
@@ -186,8 +191,8 @@ const styles = StyleSheet.create({
   },
 
   innerCard: {
-    width: CARD_WIDTH - BORDER_THICKNESS * 2,
-    height: CARD_HEIGHT - BORDER_THICKNESS * 2,
+  width: CARD_WIDTH - 1,
+  height: CARD_HEIGHT - 1,
     backgroundColor: colors.backgroundCard,
     borderRadius: BORDER_RADIUS - BORDER_THICKNESS,
     zIndex: 3,

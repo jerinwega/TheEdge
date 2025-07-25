@@ -20,8 +20,8 @@ const NoData = () => {
             }}
           />
       <View className='relative items-center mt-[-20px]'>
-        <Text className="text-textInactive tracking-wider text-xl font-bungee font-bold">
-          No Hits
+        <Text className="text-textInactive tracking-wider text-lg font-latoBold">
+          No Fixtures
         </Text>
       </View>
     </View>

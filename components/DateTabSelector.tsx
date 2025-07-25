@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
   Animated,
   FlatList,
@@ -14,8 +14,16 @@ type DateTab = {
   date: Date;
 };
 
-const DateTabSelector: React.FC = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+interface DateTabSelectorProps {
+  selectedIndex: number;
+  onDateChange: (date: Date, index: number) => void;
+}
+
+const DateTabSelector: React.FC<DateTabSelectorProps> = ({
+  selectedIndex,
+  onDateChange,
+}) => {
+
   const flatListRef = useRef<FlatList>(null);
   const animatedValue = useRef(new Animated.Value(0)).current;
 
@@ -26,8 +34,8 @@ const DateTabSelector: React.FC = () => {
 
 
 const handlePress = (index: number) => {
-  setSelectedIndex(index);
-
+  
+  onDateChange(dateTabs[index].date, index);
   flatListRef.current?.scrollToIndex({
     index,
     animated: true,
@@ -44,10 +52,8 @@ const handlePress = (index: number) => {
 
 
 const renderItem = ({ item, index }: { item: DateTab; index: number }) => {
-  const day = item.date.getDate();
-  const month = item.date
-    .toLocaleString("default", { month: "short" })
-    .toUpperCase();
+  const day = dayjs(item?.date).date(); // returns day of the month
+  const month = dayjs(item?.date).format('MMM').toUpperCase();
 
   const isActive = index === selectedIndex;
 

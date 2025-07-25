@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Constants from 'expo-constants';
+import { ACTIVE_STATUSES } from './constants';
 
 const api = axios.create({
   baseURL: 'https://v3.football.api-sports.io/',
@@ -16,6 +17,7 @@ export const fetchAPI = async (
   try {
     const mergedParams = {
       timezone: 'Europe/London',
+      status: ACTIVE_STATUSES,
       ...params,
     };
 
